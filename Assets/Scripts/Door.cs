@@ -15,8 +15,8 @@ public class Door : MonoBehaviour, IInteractable
 
     public string GetDescription()
     {
-        if (isOpen) return "Press [E] to <color=red>close</color> the door";
-        return "Press [E] to <color=green>open</color> the door";
+        if (isOpen) return "Нажми [E] чтобы закрыть дверь";
+        return "Нажми [E] чтобы открыть дверь";
     }
 
     public void Interact()
