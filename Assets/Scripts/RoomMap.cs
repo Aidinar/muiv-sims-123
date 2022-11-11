@@ -4,13 +4,13 @@ using UnityEngine;
 
 public class RoomMap : MonoBehaviour, IInteractable
 {
-	public GameObject map_ui;
+	public MapUi map_ui;
 	public string GetDescription() 
 	{
 		return "Нажми [E] чтобы открыть карту";
 	}
 	public void Interact()
 	{
-		map_ui.SetActive(true);
+		map_ui.Activate();
 	}
 }
