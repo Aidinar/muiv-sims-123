@@ -1,14 +1,27 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class InstantiateDialogue : MonoBehaviour
 {
+    private const bool DevelopMode = true;
+
+    public void Activate(string new_text)
+    {
+        text.text = new_text;
+        Window.SetActive(true);
+	}
+
+    public void Deactivate()
+    {
+        Window.SetActive(false);
+    }
+
+
     public GameObject Window;
 
 
-    public Text text;
+    public TMP_Text text;
     public Text firstAnswer;
     public Text secondAnswer;
     public Text thirdAnswer;
@@ -30,6 +43,7 @@ public class InstantiateDialogue : MonoBehaviour
 
     void Start()
     {
+        if (DevelopMode) return;
 
         secondButton.enabled = false;
         thirdButton.enabled = false;
@@ -51,6 +65,8 @@ public class InstantiateDialogue : MonoBehaviour
 
     private void Update()
     {
+        if (DevelopMode) return;
+
         if (Vector3.Distance(player.transform.position, transform.position) < 1.5f && dialogueEnded == false)
         {
             Window.SetActive(true);
