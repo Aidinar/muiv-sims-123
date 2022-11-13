@@ -1,14 +1,11 @@
 using System.Xml.Serialization;
 
-
+[System.Serializable]
 public class Answer
 {
     [XmlAttribute("tonode")]
-    public int nextNode;
+    public string nextNode;
     [XmlElement("text")]
     public string text;
-    [XmlElement("dialend")]
-    public string end;
-
 }
 

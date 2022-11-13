@@ -3,8 +3,12 @@ using System.Xml.Serialization;
 [System.Serializable]
 public class Node
 {
-    [XmlElement("npctext")]
-    public string Npctext;
+    [XmlAttribute("name")]
+    public string name;
+
+    [XmlArray("npc")]
+    [XmlArrayItem("text")]
+    public string[] texts;
 
     [XmlArray("answers")]
     [XmlArrayItem("answer")]

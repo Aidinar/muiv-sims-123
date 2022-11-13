@@ -4,139 +4,67 @@ using TMPro;
 
 public class InstantiateDialogue : MonoBehaviour
 {
-    private const bool DevelopMode = true;
+    [SerializeField] private TextAsset dialogueAsset;
+    [SerializeField] private TMP_Text nextButtonText;
+    public GameObject window;
+    public TMP_Text text;
 
-    public void Activate(string new_text)
+    private Dialogue dialogueData;
+
+    private int nextTextNumber = 0;
+    private Node _activeNode;
+    private Node ActiveNode { get { return _activeNode; }
+        set { _activeNode = value; nextTextNumber = 0; } }
+ 
+	private void Awake()
+	{
+        dialogueData = Dialogue.Load(dialogueAsset);
+        foreach (var node in dialogueData.nodes)
+        {
+            foreach (var line in node.texts) print(line);
+            foreach (var answer in node.answers) print(answer);
+        }
+    }
+
+	public void Activate(string nodeName)
     {
-        text.text = new_text;
-        Window.SetActive(true);
-	}
+        foreach (var savedNode in dialogueData.nodes)
+        {
+            if (savedNode.name == nodeName)
+            {
+                window.SetActive(true);
+                ActiveNode = savedNode;
+                Next();
+                return;
+			}
+		}
+        Debug.LogError($"{nodeName} не найден в {dialogueAsset.name}");
+    }
+
+    public void Next()
+    {
+        if (ActiveNode == null || ActiveNode.texts.Length <= nextTextNumber)
+        {
+            Deactivate();
+            return;
+        }
+        text.text = ActiveNode.texts[nextTextNumber++];
+        if (ActiveNode.texts.Length == nextTextNumber)
+        {
+            nextButtonText.text = "Закрыть";
+            // TODO добавить создание кнопок ответов
+        } else {
+            nextButtonText.text = "Следующий";
+        }
+    }
 
     public void Deactivate()
     {
-        Window.SetActive(false);
+        window.SetActive(false);
     }
 
-
-    public GameObject Window;
-
-
-    public TMP_Text text;
-    public Text firstAnswer;
-    public Text secondAnswer;
-    public Text thirdAnswer;
-    public Button firstButton;
-    public Button secondButton;
-    public Button thirdButton;
-
-    bool dialogueEnded = false;
-
-    GameObject player;
-    public TextAsset ta;
-
-    [SerializeField]
-    public int currentNode = 0;
-    public int butClicked;
-    bool textSet = false;
-    Node[] nd;
-    Dialogue dialogue;
-
-    void Start()
+    public void ChooseAnswer(int id)
     {
-        if (DevelopMode) return;
-
-        secondButton.enabled = false;
-        thirdButton.enabled = false;
-        Window.SetActive(false);
-        player = GameObject.Find("Player");
-        dialogue = Dialogue.Load(ta);
-        nd = dialogue.nodes;
-
-
-        text.text = nd[currentNode].Npctext;
-        firstAnswer.text = nd[currentNode].answers[currentNode].text;
-
-        firstButton.onClick.AddListener(but1);
-        secondButton.onClick.AddListener(but2);
-        thirdButton.onClick.AddListener(but3);
-
-        AnswerClicked(14);  //14 - для присвоения начальных значений в диалоге что бы не создавать новую функцию
-    }
-
-    private void Update()
-    {
-        if (DevelopMode) return;
-
-        if (Vector3.Distance(player.transform.position, transform.position) < 1.5f && dialogueEnded == false)
-        {
-            Window.SetActive(true);
-        }
-        else
-        {
-                Window.SetActive(false);
-
-        }
-            
-    }
-
-    private void but1()
-    {
-        butClicked = 0;
-        AnswerClicked(0);
-    }
-    private void but2()
-    {
-        butClicked = 1;
-        AnswerClicked(1);
-    }
-    private void but3()
-    {
-        butClicked = 2;
-        AnswerClicked(2);
-    }
-
-
-    public void AnswerClicked(int numberOfButton)
-    {
-
-        if (numberOfButton == 14)
-            currentNode = 0;
-        else
-        {
-            if (dialogue.nodes[currentNode].answers[numberOfButton].end == "true")
-            {
-                dialogueEnded = true;
-            }
-                
-           currentNode = dialogue.nodes[currentNode].answers[numberOfButton].nextNode;
-        }
-
-        
-
-        text.text = dialogue.nodes[currentNode].Npctext;
-
-        firstAnswer.text = dialogue.nodes[currentNode].answers[0].text;
-        if (dialogue.nodes[currentNode].answers.Length == 2)
-        {
-            secondButton.enabled = true;
-            secondAnswer.text = dialogue.nodes[currentNode].answers[1].text;
-        }
-        else {
-            secondButton.enabled = false;
-            secondAnswer.text = "";
-        }
-
-        if (dialogue.nodes[currentNode].answers.Length == 3)
-        {
-            thirdButton.enabled = true;
-            thirdAnswer.text = dialogue.nodes[currentNode].answers[2].text;
-        }
-        else {
-            thirdButton.enabled = false;
-            thirdAnswer.text = "";
-        }
-
-
-    }
-
+        print($"Выбран ответ {id}");
+	}
 }

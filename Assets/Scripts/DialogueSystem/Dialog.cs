@@ -3,14 +3,11 @@ using System.Xml.Serialization;
 using System.IO;
 
 [XmlRoot("dialogue")]
+[System.Serializable]
 public class Dialogue
 {
-
-    [XmlElement("text")]
-    public string text;
-
     [XmlElement("node")]
-    public Node[]  nodes;
+    public Node[] nodes;
 
     public static Dialogue Load(TextAsset _xml)
     {
