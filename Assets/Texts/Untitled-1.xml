@@ -1,0 +1,21 @@
+<dialogue>
+    <node>
+        <npctext> Здравствуй </npctext>
+        <answers>
+            <answer tonode = "1"> <text> Сегодня прекрасный день.Ты так не считаешь?  </text> </answer>
+            <answer tonode = "2"> <text> Как твои дела? </text> </answer>
+        </answers>
+    </node>
+    <node>
+        <npctext> Полностью согласен. </npctext>
+        <answers>
+            <answer tonode = "2"> <text> Как твои дела? </text> </answer>
+        </answers>
+    </node>
+    <node>
+        <npctext> Всё отлично,твои как? </npctext>
+        <answers>
+            <answer tonode="0"> <text> У меня тоже всё прекрасно. Спасибо,что поинтересовался! </text> <dialend>true</dialend> </answer>
+        </answers>
+    </node>
+</dialogue>
