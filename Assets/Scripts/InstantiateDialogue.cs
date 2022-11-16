@@ -8,6 +8,7 @@ public class InstantiateDialogue : MonoBehaviour
 
     public void Activate(string new_text)
     {
+        print("activate");
         text.text = new_text;
         Window.SetActive(true);
 	}
