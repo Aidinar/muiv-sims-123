@@ -3,17 +3,17 @@ using UnityEngine.Events;
 
 
 
-public class NewBehaviourScript : MonoBehaviour, IInteractable
+public class Interactor : MonoBehaviour, IInteractable
 {
     [SerializeField] private string actionText;
 
-    [SerializeField] private string onInteraction;
+    [SerializeField] private UnityEvent onInteraction;
 
     public string GetDescription()
     {
         return actionText;
     }
-    public void Intract()
+    public void Interact()
     {
         onInteraction.Invoke();
     }

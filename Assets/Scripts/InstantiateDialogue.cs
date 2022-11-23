@@ -28,14 +28,6 @@ public class InstantiateDialogue : MonoBehaviour
 
 	public void Activate(string nodeName)
     {
-<<<<<<< HEAD
-        print("activate");
-        text.text = new_text;
-        Window.SetActive(true);
-	}
-
-    public void Deactivate()
-=======
         foreach (var savedNode in dialogueData.nodes)
         {
             if (savedNode.name == nodeName)
@@ -50,7 +42,6 @@ public class InstantiateDialogue : MonoBehaviour
     }
 
     public void Next()
->>>>>>> origin/Amina
     {
         if (ActiveNode == null || ActiveNode.texts.Length <= nextTextNumber)
         {
