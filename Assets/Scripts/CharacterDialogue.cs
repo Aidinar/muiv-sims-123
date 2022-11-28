@@ -4,19 +4,9 @@ using UnityEngine;
 
 public class CharacterDialogue : MonoBehaviour
 {
-    [SerializeField] private string dialogueText;
-
-    [SerializeField] private InstantiateDialogue dialoguePanel;
-   
-    private void Start()
-    {
-        if (!dialoguePanel)
-            dialoguePanel = FindObjectOfType<InstantiateDialogue>();
-    }
+    [SerializeField] private string dialogueNode;
     public void ShowDialogue()
     {
-        print(dialoguePanel);
-        dialoguePanel.Activate(dialogueText);
-
+        Dialogue.Begin(dialogueNode);
     }
 }

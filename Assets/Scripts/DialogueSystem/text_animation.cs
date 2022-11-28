@@ -5,21 +5,28 @@ using TMPro;
 
 public class text_animation : MonoBehaviour
 {
-    string text_ui_element; 
-    public GameObject buttons;
-    void Start()
+    private TMP_Text textComponent;
+    private string stext;
+    private Coroutine coroutine;
+    void Awake()
     {
-        text_ui_element = GetComponent<TMP_Text>().text;
-        StartCoroutine(animation_text_ui(text_ui_element));
+        textComponent = GetComponent<TMP_Text>();
+        enabled = false;
     }
-    void Update()
+    public void ShowText(string text)
+    {
+        stext = text;
+        enabled = true;
+        coroutine = StartCoroutine(animation_text_ui());
+	}
+    public void Update()
     {
         if (Input.GetMouseButtonDown(1))
         {           
             stop_animation_textUi();
         }
     }
-    IEnumerator animation_text_ui(string stext)
+    private IEnumerator animation_text_ui()
     {
         int i = 0;
         bool end = false;
@@ -40,27 +47,22 @@ public class text_animation : MonoBehaviour
             }
             if (end)
             {
-                GetComponent<TMP_Text>().text = stext.Substring(0, i) + "</color>";
+                textComponent.text = stext.Substring(0, i) + "</color>";
             }
             else
-                GetComponent<TMP_Text>().text = stext.Substring(0, i);
+            {
+                textComponent.text = stext.Substring(0, i);
+            }
             i++;
 
             yield return new WaitForSeconds(0.05f);
         }
         stop_animation_textUi();
     }
-    void stop_animation_textUi()
+    public void stop_animation_textUi()
     {
-        StopAllCoroutines();
-        GetComponent<TMP_Text>().text = text_ui_element;
-        buttons.SetActive(true);        
-    }
-
-    public void next_text_func(GameObject next_text)
-    {
-        gameObject.SetActive(false);
-        next_text.SetActive(true);
-        
+        if (coroutine != null) StopCoroutine(coroutine);
+        textComponent.text = stext;
+        enabled = false;
     }
 }
