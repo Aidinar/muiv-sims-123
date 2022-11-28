@@ -1,9 +1,7 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
+
 
 public class text_animation : MonoBehaviour
 {
@@ -12,7 +10,7 @@ public class text_animation : MonoBehaviour
     void Start()
     {
         text_ui_element = GetComponent<TMP_Text>().text;
-        StartCoroutine("animation_text_ui", text_ui_element);
+        StartCoroutine(animation_text_ui(text_ui_element));
     }
     void Update()
     {
@@ -56,9 +54,9 @@ public class text_animation : MonoBehaviour
     {
         StopAllCoroutines();
         GetComponent<TMP_Text>().text = text_ui_element;
-        buttons.SetActive(true);
-        
+        buttons.SetActive(true);        
     }
+
     public void next_text_func(GameObject next_text)
     {
         gameObject.SetActive(false);
