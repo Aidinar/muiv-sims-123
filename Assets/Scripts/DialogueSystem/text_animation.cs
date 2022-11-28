@@ -62,7 +62,8 @@ public class text_animation : MonoBehaviour
     public void stop_animation_textUi()
     {
         if (coroutine != null) StopCoroutine(coroutine);
-        textComponent.text = stext;
+        if (textComponent)
+            textComponent.text = stext;
         enabled = false;
     }
 }
