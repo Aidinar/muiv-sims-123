@@ -220,16 +220,6 @@ public class WaterSystem : MonoBehaviour
 
 
     public Camera currentCamera;
-    private Camera sceneCamera;
-    private float prevWindSpeed = -1;
-    int causticTexSizeScaledByWind = -1;
-    int causticTrisCountScaledByWind = -1;
-
-
-    private GameObject causticDecalGO;
-    private GameObject causticMeshGO;
-    private GameObject causticCameraGO;
-
 
 
     //private FFT_GPU fftGPU;
@@ -512,8 +502,6 @@ public class WaterSystem : MonoBehaviour
 
     #endregion
 
-    private int prevMeshQuality = -1;
-   
     public enum AsyncInitializingStatusEnum
     {
         NonInitialized,
@@ -526,7 +514,6 @@ public class WaterSystem : MonoBehaviour
     AsyncInitializingStatusEnum shoreLineInitializingStatus;
     AsyncInitializingStatusEnum flowmapInitializingStatus;
     AsyncInitializingStatusEnum causticInitializingStatus;
-    AsyncInitializingStatusEnum orthoDepthInitializingStatus;
     AsyncInitializingStatusEnum fluidsSimInitializingStatus;
 
     private const int waterLayer = 4; //water layer
@@ -668,11 +655,9 @@ public class WaterSystem : MonoBehaviour
         waterSharedMaterials.Clear();
         waterSharedComputeShaders.Clear();
 
-        prevMeshQuality = -1;
         shoreLineInitializingStatus = AsyncInitializingStatusEnum.NonInitialized;
         flowmapInitializingStatus = AsyncInitializingStatusEnum.NonInitialized;
         causticInitializingStatus = AsyncInitializingStatusEnum.NonInitialized;
-        orthoDepthInitializingStatus = AsyncInitializingStatusEnum.NonInitialized;
         fluidsSimInitializingStatus = AsyncInitializingStatusEnum.NonInitialized;
 
         isWaterInitialized = false;
@@ -960,7 +945,7 @@ public class WaterSystem : MonoBehaviour
         currentBakeFluidsFrames = 0;
     }
 
-    void BakeFluidSimulationFrame()
+    async void BakeFluidSimulationFrame()
     {
         if (currentBakeFluidsFrames < BakeFluidsLimitFrames)
         {
@@ -973,7 +958,7 @@ public class WaterSystem : MonoBehaviour
         {
             fluidsSimulation.SavePrebakedSimulation(waterGUID);
             BakedFluidsSimPercentPassed = 0;
-            ReadPrebakedFluidsSimulation();
+            await ReadPrebakedFluidsSimulation();
             fluidsSimInitializingStatus = AsyncInitializingStatusEnum.Initialized;
             Debug.Log("Fluids obstacles saved!");
         }
@@ -1669,7 +1654,7 @@ public class WaterSystem : MonoBehaviour
         return ambient;
     }
 
-    public async void UpdateShaderParameters()
+    public void UpdateShaderParameters()
     {
         Shader.SetGlobalVector("Test4", Test4);
 

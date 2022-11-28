@@ -36,7 +36,7 @@ public class KW_Buoyancy : MonoBehaviour
     private List<Vector3[]> debugForces; // For drawing force gizmos
 
     private Rigidbody rigidBody;
-    private Collider collider;
+    private new Collider collider;
 
     float bounceMaxSize;
 

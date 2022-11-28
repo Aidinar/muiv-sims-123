@@ -107,12 +107,8 @@ public class KW_DynamicWaves : MonoBehaviour
     }
 
 
-    private float interactiveWaterCurrentTime;
     private Vector3 lastInteractPos;
-    private Vector3 lastInteractOffset;
     public Vector3 InteractPos; //relative to camera frustrum area position center
-    private Vector2 shorelineWavesLastDepthPos = new Vector3(float.MaxValue, 0);
-    private float lastWaterLevel = float.MaxValue;
 
     Vector3 ComputeAreaSimulationJitter(float offset)
     {
@@ -199,7 +195,6 @@ public class KW_DynamicWaves : MonoBehaviour
         //    UpdateDynamicWavesLod(wavesData[0], wavesData[1], wavesData[2], areaSize, propagationSpeed, Vector3.zero);
         //}
         lastInteractPos = InteractPos;
-        lastInteractOffset = offset;
     }
 
 

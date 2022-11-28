@@ -1,18 +1,17 @@
-﻿
+﻿#pragma warning disable CS4014
+#pragma warning disable CS1998
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEditor;
-using UnityEditorInternal;
 using UnityEngine;
 using UnityEngine.Profiling;
 using Debug = UnityEngine.Debug;
 using Random = UnityEngine.Random;
 
-[System.Serializable]
+[Serializable]
 [CustomEditor(typeof(WaterSystem))]
 public class WaterSystemInspector : Editor
 {
@@ -22,13 +21,9 @@ public class WaterSystemInspector : Editor
 
     private float floatMapCircleRadiusDefault = 2f;
     private bool  leftKeyPressed;
-    private bool keyPressed;
     private bool  isFlowMapChanged;
     private bool isActive;
 
-    private static float InteractiveWaveHelperEnableTime = 300000;
-    private float interactiveWaveCurrentTime;
-    private const int InteractMaxResolution = 2048;
 
    
     GUIStyle helpBoxStyle;
@@ -1385,3 +1380,5 @@ public class WaterSystemInspector : Editor
         return result;
     }
 }
+#pragma warning restore CS4014
+#pragma warning restore CS1998

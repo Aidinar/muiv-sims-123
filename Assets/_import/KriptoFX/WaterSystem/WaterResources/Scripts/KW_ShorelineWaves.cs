@@ -400,7 +400,6 @@ public class KW_ShorelineWaves : MonoBehaviour
 
     private float UpdateEachSeconds = 0.5f;
     private float lastLodUpdateLeftTime = 0;
-    private bool updateLodTest = false;
 
     bool lastFoamShadowsStatus;
 
