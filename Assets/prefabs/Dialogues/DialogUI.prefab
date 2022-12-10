@@ -1429,3 +1429,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d2c698ce32cf2f4087d2b3914fc2294, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textComponent: {fileID: 8928790630226366666}
