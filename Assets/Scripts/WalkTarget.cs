@@ -1,18 +1,26 @@
 using UnityEngine;
+using UnityEngine.Events;
 
 public class WalkTarget : MonoBehaviour
 {
     [SerializeField] Transform target;
+    [SerializeField] UnityEvent OnTargetEnter;
     public void SetTarget(Transform  value)
     {
-        target = value;
-        transform.LookAt(
-            new Vector3(
-                target.position.x,
-                transform.position.y,
-                target.position.z
-            ));
-
+        if (value)
+        {
+            target = value;
+            transform.LookAt(
+                new Vector3(
+                    target.position.x,
+                    transform.position.y,
+                    target.position.z
+                ));
+        }
+        else
+        {
+            GetComponentInChildren<Animator>().Play("New State 0");
+        }
     }
     public void Start()
 
@@ -25,8 +33,7 @@ public class WalkTarget : MonoBehaviour
     {
         if (trigger.transform == target)
         {
-            print($"{name}дошел до цели"); ;
-
+            OnTargetEnter.Invoke();
         }
     }
 }
