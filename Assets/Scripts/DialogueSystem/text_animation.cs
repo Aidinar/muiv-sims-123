@@ -5,7 +5,7 @@ using TMPro;
 
 public class text_animation : MonoBehaviour
 {
-    private TMP_Text textComponent;
+    [SerializeField] private TMP_Text textComponent;
     private string stext;
     private Coroutine coroutine;
     void Awake()
