@@ -17,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/payza.unity
     guid: 1655fc118e8ef8d47b2a209f66c0d724
+  - enabled: 1
+    path: Assets/Scenes/Park 2.unity
+    guid: 425284cbe429f7643befc27a0395724a
   m_configObjects: {}

@@ -755,7 +755,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6583803559978392213, guid: 7f47bed65c3cb2f458f9f57610363e11, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
-      value: park
+      value: Park 2
       objectReference: {fileID: 0}
     - target: {fileID: 6583803559978392214, guid: 7f47bed65c3cb2f458f9f57610363e11, type: 3}
       propertyPath: m_Pivot.x
