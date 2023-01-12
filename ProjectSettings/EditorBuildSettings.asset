@@ -5,15 +5,21 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/InteractionTest.unity
     guid: 307d30b452170354a9cb388311a7f055
   - enabled: 1
+    path: Assets/Scenes/Menu.unity
+    guid: e190993814b14b444933890735850465
+  - enabled: 1
+    path: Assets/Scenes/apartment cutScene.unity
+    guid: 0ea1cbb5292bef946afcf80f04adee0b
+  - enabled: 1
     path: Assets/Scenes/apartment.unity
     guid: f97bee0991c1c1b43b4b4b5f7bbc5a67
-  - enabled: 1
-    path: Assets/Scenes/park.unity
-    guid: 71180870ee74b4848aef864edeecec30
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/payza.unity
     guid: 1655fc118e8ef8d47b2a209f66c0d724
