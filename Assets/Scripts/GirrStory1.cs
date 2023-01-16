@@ -1,11 +1,11 @@
-
 using UnityEngine;
 
 public class GirrStory1 : MonoBehaviour
 {
-    
-    private void OnTriggerEnter(Collider collider)
+
+    public void Talk()
     {
-        print($"{collider.name}enter girl collider");
+        var inkComponent = FindObjectOfType<InkTestingScript>();
+        inkComponent.refreshUI();
     }
 }
