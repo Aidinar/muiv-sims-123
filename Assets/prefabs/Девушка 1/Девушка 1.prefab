@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 4412607325687080453}
   - component: {fileID: 5661366131334621889}
   - component: {fileID: 579323538}
-  - component: {fileID: 579323537}
   - component: {fileID: 579323541}
+  - component: {fileID: 768750568}
   m_Layer: 0
   m_Name: "\u0414\u0435\u0432\u0443\u0448\u043A\u0430 1"
   m_TagString: Untagged
@@ -64,18 +64,6 @@ CapsuleCollider:
   m_Height: 2.4
   m_Direction: 1
   m_Center: {x: 0, y: 1.25, z: 0}
---- !u!114 &579323537
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2853546277516060091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 13490a473310668488e7476ac46ce366, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &579323541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -92,9 +80,9 @@ MonoBehaviour:
   onInteraction:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 579323537}
-        m_TargetAssemblyTypeName: GirrStory1, Assembly-CSharp
-        m_MethodName: Talk
+      - m_Target: {fileID: 768750568}
+        m_TargetAssemblyTypeName: StoryAccess, Assembly-CSharp
+        m_MethodName: Play
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -104,6 +92,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &768750568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2853546277516060091}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 39ef280ce9ed4bd48a734e5db55eba52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  storyKey: 0
 --- !u!1001 &4556343566106140806
 PrefabInstance:
   m_ObjectHideFlags: 0

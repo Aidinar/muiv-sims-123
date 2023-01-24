@@ -22,7 +22,8 @@ public class InkTestingScript : MonoBehaviour
     public void showUI()
     {
         showUI(story.currentText);
-}
+    }
+    
     public void refreshUI()
     {
 
