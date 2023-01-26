@@ -7,7 +7,7 @@ public class StoryAccess : MonoBehaviour
         _storyController ??
         (_storyController = FindObjectOfType<InkStory>());
 
-    [SerializeField] private StoryEnum storyKey;
+    [SerializeField] private InkStory.Enum storyKey;
     public void Play()
     {
         storyController.ActivateStory(storyKey);

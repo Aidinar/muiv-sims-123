@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2863795206373119639}
   - component: {fileID: 2863795206373119634}
   - component: {fileID: 4462880661508932035}
+  - component: {fileID: 822927}
   m_Layer: 0
   m_Name: "\u0411\u0430\u0431\u0443\u043B\u044F 1"
   m_TagString: Untagged
@@ -61,6 +62,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   storyKey: 1
+--- !u!114 &822927
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2863795206373119635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe50e852b4ed5494e8e58ec1d2cdca0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  actionText: "\u0413\u043E\u0432\u043E\u0440\u0438\u0442\u044C"
+  onInteraction:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4462880661508932035}
+        m_TargetAssemblyTypeName: StoryAccess, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1001 &2629525381004350868
 PrefabInstance:
   m_ObjectHideFlags: 0
