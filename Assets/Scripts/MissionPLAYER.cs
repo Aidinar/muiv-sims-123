@@ -12,7 +12,7 @@ public class MissionPLAYER : MonoBehaviour {
     void OnGUI()
     {
         GUI.Label
-         (new Rect(Screen.width - 100, 5, 100,30), "Опыт: " + Experience);
+         (new Rect(Screen.width - 100, 5, 100,30), "Опыт:" + Experience);
 
         if (quest)
         {

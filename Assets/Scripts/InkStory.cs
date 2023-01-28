@@ -11,12 +11,14 @@ public class InkStory : MonoBehaviour
     {
         ДевушкаПарк,
         БабушкаПарк,
+        ПолитикПарк,
     }
     private static Dictionary<Enum, string> storyDict =
         new Dictionary<Enum, string>()
     {
         { Enum.БабушкаПарк, "Grandma"},
         { Enum.ДевушкаПарк, "Girl"},
+        { Enum.ПолитикПарк, "Politik"},
     };
 
     Story story;
